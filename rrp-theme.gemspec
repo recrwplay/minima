@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.name          = "rrp-theme"
   spec.version       = "0.1.0"
   spec.authors       = ["recrwplay"]
-  spec.email         = ["NDewhurs@uk.ibm.com"]
+  spec.email         = ["ndewhurst@gmail.com"]
 
   spec.summary       = "Write a short summary, because Rubygems requires one."
   spec.homepage      = "http://recordrewindplay.co.uk"
