@@ -1,0 +1,20 @@
+
+{% unless include.id contains "https://open.spotify.com" %}
+    
+    {% assign spotify_src = "https://open.spotify.com/embed/track/" | append: include.id %}
+    {% assign width = '100%' %}
+    {% assign height = '80px' %}
+
+    {% if include.categories contains "Playlists" %}
+        {% assign spotify_src = "https://open.spotify.com/embed/user/cybrarian/playlist/" | append: include.id %}
+        {% assign width = '300' %}
+        {% assign height = '380' %}
+    {% elsif include.categories contains "Albums" %}
+        {% assign spotify_src = "https://open.spotify.com/embed/album/" | append: include.id %}
+        {% assign width = '300' %}
+        {% assign height = '380' %}
+    {% endif %}
+
+{% endunless %}
+
+<iframe src="{{ spotify_src }}" width="{{ width }}" height="{{ height }}" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>

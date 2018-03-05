@@ -31,10 +31,15 @@ body {
  * Set `margin-bottom` to maintain vertical rhythm
  */
 h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
+p, blockquote:last-of-type, pre,
 ul, ol, dl, figure,
 %vertical-rhythm {
   margin-bottom: $spacing-unit / 2;
+}
+
+p,
+%vertical-rhythm {
+  margin-top: $spacing-unit;
 }
 
 
@@ -126,16 +131,21 @@ a {
  * Blockquotes
  */
 blockquote {
-  color: $grey-color;
-  border-left: 4px solid $grey-color-light;
+  // color: $grey-color;
+  // border-left: 2px solid $grey-color-light;
   padding-left: $spacing-unit / 2;
-  @include relative-font-size(1.125);
-  letter-spacing: -1px;
+  // @include relative-font-size(1.125);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  // letter-spacing: -1px;
   font-style: italic;
 
   > :last-child {
     margin-bottom: 0;
   }
+}
+
+blockquote p {
+  margin:0;
 }
 
 

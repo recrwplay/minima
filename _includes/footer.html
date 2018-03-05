@@ -1,35 +1,49 @@
 <footer class="site-footer h-card">
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
-  <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">
-            {% if site.author %}
-              {{ site.author | escape }}
-            {% else %}
-              {{ site.title | escape }}
-            {% endif %}
-            </li>
-            {% if site.email %}
-            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        {% include social.html %}
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description | escape }}</p>
-      </div>
+<div class="wrapper">
+    <div class="footer-col footer-col-1">
+        {% include categories.html %}
     </div>
+    <div class="footer-col footer-col-2">
+        {% include social.html %}
+    </div>
+</div>
 
   </div>
 
 </footer>
+
+<style>
+  .videoWrapper {position: relative; padding-bottom: 56.333%; height: 0; margin-bottom:3rem; margin-top:-2rem;}
+  .videoWrapper iframe {position: absolute; top: 1.5rem; left: 0; width: 100%; height: 100%;}    
+</style>
+
+<script type="text/javascript">
+    var cl = cloudinary.Cloudinary.new({cloud_name: "neil-dewhurst"}); 
+    // replace 'demo' with your cloud name in the line above 
+    cl.responsive();
+</script>
+  
+<script>
+  function getId(url) {
+      var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      var match = url.match(regExp);
+      if (match && match[2].length == 11) {
+          return match[2];
+      } else {
+          return 'error';
+      }
+  }
+  function yt_url2embed() {
+      var p = document.getElementsByTagName('p');
+      for(var i = 0; i < p.length; i++) {
+          var pattern = /^((http|https|ftp):\/\/)/;
+          if(pattern.test(p[i].innerHTML)) {
+              var myId = getId(p[i].innerHTML);
+              p[i].innerHTML = '<div class="videoWrapper"><iframe width="720" height="420" src="https://www.youtube.com/embed/' + myId + '?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>';
+          }
+      }
+  }
+  yt_url2embed();
+  </script>
